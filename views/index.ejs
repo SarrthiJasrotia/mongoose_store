@@ -10,11 +10,11 @@
     <h1>INDEX</h1>
     <nav><a href="/products/new">List a new product</a></nav>
     <ul>
-        <% for (let i=0;i < productsIndex.lenght;i++){ %>
+        <% productsIndex.forEach(productsI=> { %>
             <li>
-                <a href="/products/<%=i%>"><%=productsIndex[i].name;%></a>
+                <a href="/products/<%=productsI._id; %>"><%=productsI.name;%></a>
             </li>
-            <% } %>
+            <% }) %>
 
     </ul>
 </body>

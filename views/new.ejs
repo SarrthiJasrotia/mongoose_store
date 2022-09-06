@@ -8,12 +8,13 @@
 	</head>
 	<body>
 		<h1>PRODUCTS</h1>
-		<form action="/product" method="POST">
-			Name: <input type="text" name="title" /><br />
-			Description: <input type="text" name="product-description" /><br />
-            <input type="text" name="image" /><br />
-			Price:<input type="submit" name="" value="Add Book" />
-            Quantity
+		<form action="/products" method="POST">
+			Name: <input type="text" name="name" /><br />
+			Description: <input type="text" name="description" /><br />
+            Image: <input type="text" name="img" /><br />
+			Price: <input type="number" name="price" value="price" />
+            Quantity: <input type="number" name="qty" value="qty" />
+            <input type="submit" name="" value="List product">
 		</form>
 	</body>
 	

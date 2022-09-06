@@ -26,10 +26,12 @@ app.use(express.urlencoded({ extended: true }));
 
 // INDEX
 app.get("/products",(req,res)=>{
-    res.render("index.ejs",{
-        productsIndex:Product
-    })
-})
+    Product.find({},(error,allProducts)=>{
+        res.render("index.ejs",{
+            productsIndex: allProducts,
+        });
+    });
+});
 // NEW
 app.get('/products/new',(req,res)=>{
     res.render('new.ejs')
@@ -39,11 +41,19 @@ app.get('/products/new',(req,res)=>{
 // UPDATE
 
 // CREATE
-
+app.post('/products', (req, res) => {
+    Product.create(req.body, (error, listedProduct) => {
+        res.redirect('/products');
+    });
+})
 // EDIT
 
 // SHOW
-
+app.get('/products/:id',(req,res)=>{
+    Product.findById(req.params.id,(error,product)=>{
+        res.send(product);
+    });
+});
 
 // Listener
 const PORT = process.env.PORT;
