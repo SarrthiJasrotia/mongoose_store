@@ -25,9 +25,13 @@ app.use(express.urlencoded({ extended: true }));
 ////ROUTES////
 
 // INDEX
-
+app.get("/products",(req,res)=>{
+    res.render("index.ejs",{
+        productsIndex:Product
+    })
+})
 // NEW
-app.get('/products',(req,res)=>{
+app.get('/products/new',(req,res)=>{
     res.render('new.ejs')
 })
 // DELETE
