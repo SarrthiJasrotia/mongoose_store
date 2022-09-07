@@ -4,6 +4,7 @@ const app = express();
 require('dotenv').config();
 const mongoose = require("mongoose")
 const Product = require('./models/product')
+const methodOverride = require("method-override")
 
 //Database config
 mongoose.connect(process.env.DATABASE_URL, {
@@ -19,6 +20,7 @@ db.on('connected', () => console.log('mongo connected'));
 db.on('disconnected', () => console.log('mongo disconnected'));
 
 // Middleware
+app.use(methodOverride("_method"))
 // Body parser middleware: give us access to req.body
 app.use(express.urlencoded({ extended: true }));
 
@@ -37,7 +39,11 @@ app.get('/products/new',(req,res)=>{
     res.render('new.ejs')
 })
 // DELETE
-
+app.delete("/products/:id",(req,res)=>{
+    Product.findByIdAndDelete(req.params.id, (error, data)=>{
+        res.redirect('/products')
+    });
+});
 // UPDATE
 
 // CREATE
