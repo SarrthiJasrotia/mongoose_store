@@ -13,9 +13,9 @@
         <% productsIndex.forEach(productsI=> { %>
             <li>
                 <a href="/products/<%=productsI._id; %>"><%=productsI.name;%></a>
-            <!-- <form action="/products/<%=productsI._id%>?_method=DELETE" method="POST">
+            <form action="/products/<%=productsI._id%>?_method=DELETE" method="POST">
                 <input type="submit" value="DELETE">
-            </form> -->
+            </form>
             </li>
             <% }) %>
 
