@@ -14,7 +14,10 @@
         </style>
 	</head>
 	<body>
-		<h1><%=productsShow.name%></h1>
+        <nav><a href="/products">Back</a></nav>
+		<h1><%=productsShow.name%></h1><br>
+        <h3><%=productsShow.description%></h3>
+        <h1>Price:<%=productsShow.price%> Ham-burgers</h1>
         <img src="<%=productsShow.img%>" alt="">
 	</body>
 </html>
