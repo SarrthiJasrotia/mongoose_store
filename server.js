@@ -50,8 +50,10 @@ app.post('/products', (req, res) => {
 
 // SHOW
 app.get('/products/:id',(req,res)=>{
-    Product.findById(req.params.id,(error,product)=>{
-        res.send(product);
+    Product.findById(req.params.id,(error,allProducts)=>{
+        res.render('show.ejs',{
+            productsShow: allProducts,
+        });
     });
 });
 
