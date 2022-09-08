@@ -4,22 +4,53 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
+    <style>
+        body{
+            text-align: center;
+        }
+        #mainDiv{
+            margin: auto;
+            
+            text-align: center;
+        }
+        #pLink {
+            font-size: 30px;
+            font-style: none;
+        }
+
+        .pDiv {
+            height: 500px;
+            width: 500px;
+            text-align: center;
+            margin: auto;
+            border: 2px solid black;
+        }
+
+        .pDiv img {
+            width: 400px;
+        }
+    </style>
 </head>
 
 <body>
     <h1>INDEX</h1>
     <nav><a href="/products/new">List a new product</a></nav>
-    <ul>
+    <div id="mainDiv">
+        <h2> Products are listed below</h2>
         <% productsIndex.forEach(productsI=> { %>
-            <li>
-                <a href="/products/<%=productsI._id; %>"><%=productsI.name;%></a>
-            <form action="/products/<%=productsI._id%>?_method=DELETE" method="POST">
-                <input type="submit" value="DELETE">
-            </form>
-            </li>
-            <% }) %>
+            <div class="pDiv">
+                <img src="<%=productsI.img%>" alt=""><br>
 
-    </ul>
+                <a href="/products/<%=productsI._id; %>" id="pLink">
+                    <%=productsI.name;%>
+                </a><br>
+                <h3>Quantity:<%=productsI.qty%>
+                </h3><br>
+                <h3>Price:<%=productsI.price%> Ham-burgers</h3>
+            </div>
+
+            <% }) %>
+    </div>
 </body>
 
 </html>
