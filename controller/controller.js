@@ -24,11 +24,19 @@ productRouter.delete("/:id",(req,res)=>{
     });
 });
 // UPDATE
-productRouter.put('/id:',(req,res)=>{
+productRouter.put('/:id',(req,res)=>{
     Product.findByIdAndUpdate(req.params.id,req.body, {
         new:true,
     },
     (error,updatedProduct)=>{
+        res.redirect(`/products/${req.params.id}`)
+    });
+});
+
+productRouter.put('/:id/buy', (req,res)=>{
+    Product.findById(req.params.id,(error,updatedProduct)=>{
+        updatedProduct.qty -= 1
+        updatedProduct.save()
         res.redirect(`/products/${req.params.id}`)
     });
 });
